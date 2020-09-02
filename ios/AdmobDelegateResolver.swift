@@ -30,6 +30,10 @@ class AdmobDelegateResolver: GADUnifiedNativeAdLoaderDelegate {
 		adLoader.delegate = self
 		adLoader.load(GADRequest())
 	}
+	
+	public func load() {
+		adLoader.load(GADRequest())
+	}
 
 	func adLoader(_ adLoader: GADAdLoader,
 				didReceive nativeAd: GADUnifiedNativeAd) {

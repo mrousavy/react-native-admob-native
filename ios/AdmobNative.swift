@@ -1,8 +1,11 @@
+
+
 @objc(AdmobNative)
 class AdmobNative: NSObject {
 
-    @objc(multiply:withB:withResolver:withRejecter:)
-    func multiply(a: Float, b: Float, resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
-        resolve(a*b)
+    @objc(withResolver:withRejecter:)
+    func load(resolve:RCTPromiseResolveBlock,reject:RCTPromiseRejectBlock) -> Void {
+		var admobDelegate = AdmobDelegateResolver(adUnitID: "", resolve: resolve, reject: reject)
+		admobDelegate.load()
     }
 }
