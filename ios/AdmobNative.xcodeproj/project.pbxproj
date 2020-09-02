@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-
-
-		F4FF95D7245B92E800C19C63 /*  AdmobNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  AdmobNative.swift */; };
-
-		5E555C0D2413F4C50049A1A2 /* AdmobNative.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* AdmobNative.mm */; };
+		B861E08724FF8F7F00E4B390 /* AdmobDelegateResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B861E08624FF8F7F00E4B390 /* AdmobDelegateResolver.swift */; };
+		F4FF95D7245B92E800C19C63 /* AdmobNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* AdmobNative.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,12 +25,10 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libAdmobNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAdmobNative.a; sourceTree = BUILT_PRODUCTS_DIR; };
-
-
 		B3E7B5891CC2AC0600A0062D /* AdmobNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdmobNative.m; sourceTree = "<group>"; };
+		B861E08624FF8F7F00E4B390 /* AdmobDelegateResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobDelegateResolver.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* AdmobNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AdmobNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* AdmobNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdmobNative.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,12 +53,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-
-
+				B861E08624FF8F7F00E4B390 /* AdmobDelegateResolver.swift */,
 				F4FF95D6245B92E800C19C63 /* AdmobNative.swift */,
 				B3E7B5891CC2AC0600A0062D /* AdmobNative.m */,
 				F4FF95D5245B92E700C19C63 /* AdmobNative-Bridging-Header.h */,
-
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -125,11 +118,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
-
+				B861E08724FF8F7F00E4B390 /* AdmobDelegateResolver.swift in Sources */,
 				F4FF95D7245B92E800C19C63 /* AdmobNative.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* AdmobNative.m in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,11 +232,9 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AdmobNative;
 				SKIP_INSTALL = YES;
-
 				SWIFT_OBJC_BRIDGING_HEADER = "AdmobNative-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-
 			};
 			name = Debug;
 		};
@@ -263,10 +251,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = AdmobNative;
 				SKIP_INSTALL = YES;
-
 				SWIFT_OBJC_BRIDGING_HEADER = "AdmobNative-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-
 			};
 			name = Release;
 		};
