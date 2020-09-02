@@ -7,45 +7,55 @@
 //
 
 import Foundation
+import GoogleMobileAds
 
 func getRootViewController() -> UIViewController? {
-	return UIApplication.sharedApplication().keyWindow?.rootViewController
+	return UIApplication.shared.keyWindow?.rootViewController
 }
 
-class AdmobDelegateResolver: GADUnifiedNativeAdLoaderDelegate {
+class AdmobDelegateResolver: NSObject, GADUnifiedNativeAdLoaderDelegate {
 	var adLoader: GADAdLoader!
 	var resolver: RCTPromiseResolveBlock
 	var rejecter: RCTPromiseRejectBlock
 
-	init(adUnitID: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+	init(adUnitID: String, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
 		self.resolver = resolve
 		self.rejecter = reject
+		super.init()
 		
-		let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
-		multipleAdsOptions.numberOfAds = 1
-
+		
+		let imageAdLoaderOptions = GADNativeAdImageAdLoaderOptions()
+		imageAdLoaderOptions.disableImageLoading = true
+		
+		let mediaAdLoaderOptions = GADNativeAdMediaAdLoaderOptions()
+		mediaAdLoaderOptions.mediaAspectRatio = .any
+		
+		let viewAdOptions = GADNativeAdViewAdOptions()
+		viewAdOptions.preferredAdChoicesPosition = .topRightCorner
+		
 		adLoader = GADAdLoader(adUnitID: adUnitID, rootViewController: getRootViewController(),
 			adTypes: [GADAdLoaderAdType.unifiedNative],
-			options: [multipleAdsOptions])
+			options: [imageAdLoaderOptions, mediaAdLoaderOptions, viewAdOptions])
 		adLoader.delegate = self
-		adLoader.load(GADRequest())
 	}
 	
 	public func load() {
 		adLoader.load(GADRequest())
 	}
 
+	// Successfully loaded 1 ad
 	func adLoader(_ adLoader: GADAdLoader,
 				didReceive nativeAd: GADUnifiedNativeAd) {
 		self.resolver(nativeAd)
 	}
-
-	func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
-		// The adLoader has finished loading ads, and a new request can be sent.
-	}
 	
+	// Failed to load
 	func adLoader(_ adLoader: GADAdLoader,
 				  didFailToReceiveAdWithError error: GADRequestError) {
 		self.rejecter("ERROR_RECEIVING_AD", error.localizedDescription, error)
+	}
+
+	func adLoaderDidFinishLoading(_ adLoader: GADAdLoader) {
+		self.resolver(nil)
 	}
 }
